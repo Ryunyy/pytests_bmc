@@ -4,17 +4,17 @@ import json
 import time
 from loguru import logger
 
-#
+#local variables
 host = '0.0.0.0'
 port = 2443
 userName = 'root'
 userPass = '0penBmc'
 
-#
+#path for log file
 logPath = '/home/svyat/Desktop/pytests/logs.log'
 logger.add(logPath, level='DEBUG')
 
-#
+#fixture creating connection. disassemble headers and return bundle of status code and auth token
 @pytest.fixture(scope="session")
 def create_session():
     response = requests.post(f'https://{host}:{port}/redfish/v1/SessionService/Sessions', json={"UserName":userName, "Password":userPass}, verify=False)
@@ -32,7 +32,7 @@ def create_session():
     responseBundle = [response.status_code, authToken]
     return responseBundle
 
-#
+#test case for successful authentification
 def test_case_SUCCESS_AUTH(create_session):
     errors = []
     logger.info(10*'-' + 'TEST CASE SUCCESS AUTH' + 10*'-')
@@ -59,7 +59,7 @@ def test_case_SUCCESS_AUTH(create_session):
     assert not errors
 
 
-#   
+#test case for getting system information
 def test_case_GET_SYSINFO(create_session):
     errors = []
     logger.info(10*'-' + 'TEST CASE GET SYSINFO' + 10*'-')
@@ -107,7 +107,7 @@ def test_case_GET_SYSINFO(create_session):
     assert not errors
 
 
-#
+#test case for execution power management commands
 def test_case_POWER_MANAGEMENT(create_session):
     errors = []
     logger.info(10*'-' + 'TEST CASE POWER MANGEMENT' + 10*'-')
