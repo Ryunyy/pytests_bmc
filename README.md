@@ -2,7 +2,7 @@
 
 ## Отчет.
 
-При выполнении лабораторной работы были написаны два класса пользователей: OBMCAPI и PublicAPI, описанные в файле [locustfile.py](https://github.com/Ryunyy/pytests_bmc/blob/main/locustfile.py). Каждый из них запускался через командную строку командой ```locust -f locustfile.py [classname]```
+При выполнении лабораторной работы были написаны два класса пользователей: OBMCAPI и PublicAPI, описанные в файле [locustfile.py](https://github.com/Ryunyy/pytests_bmc/blob/main/locustfile.py). Каждый из них запускался через командную строку командой ```locust -f locustfile.py [classname]```. В настройках хост указывался как ```https:/```
 
 Ниже представлены скриншоты WebUI Locust при нагрузочном тестировании
 
